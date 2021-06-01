@@ -11,14 +11,14 @@ Este desafio deve ser feito por você em sua casa.
 
 1. Primeiro, faça um fork deste projeto para sua conta no Github (crie uma se você não possuir).
 2. Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local.
-3. Por fim, envie via email um arquivo patch para seu contato na Impulso.
+3. Por fim, envie via email com o link do seu fork.
 
 # Descrição do projeto
 
 Você recebeu um arquivo CNAB com os dados das movimentações finanaceira de várias lojas.
 Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
 
-Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https://github.com/mlalbuquerque/desafio-ruby-backend/blob/master/CNAB.txt), normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
+Sua tarefa é criar uma interface web que aceite upload do arquivo CNAB presente neste repositório, normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
 
 **Sua aplicação web DEVE:**
 
