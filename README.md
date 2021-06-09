@@ -2,7 +2,7 @@
 
 1. Foi usado a versão do ruby 2.7.1
 2. O postgresql usado foi a versão PostgreSQL 13.3 (Ubuntu 13.3-1.pgdg20.10+1)
-3. Foi criado o diretório curupira-migrate pois a intenção inicial era fazer um migrate generico para qualquer tipo de arquivo. Não tive tempo para isso e descidi no ato do processo de criação fazer só o que foi pedido.
+3. A intenção inicial era fazer um migrate generico para qualquer tipo de arquivo. Não tive tempo para isso e descidi no ato do processo de criação fazer só o que foi pedido.
 4. Rodar bundle install e yarn install para rodar o projeto.
 
 # Desafio programação - para vaga Back-end
