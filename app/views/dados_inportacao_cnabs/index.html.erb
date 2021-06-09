@@ -1,0 +1,103 @@
+<p id="notice"><%= notice %></p>
+
+<h1>CNABS Importados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Data</th>
+      <th>Valor</th>
+      <th>Cpf</th>
+      <th>Cartao</th>
+      <th>Hora</th>
+      <th><!--Dono da loja--></th>
+      <th><!--Nome loja--></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loja_anterior = '' %>
+    <% @total_loja = 0 %>
+    <% @total_geral = 0 %>
+
+    <% @dados_inportacao_cnabs.each do |dados_inportacao_cnab| %>
+      <% unless dados_inportacao_cnab.nome_loja == @loja_anterior %>
+        <% if @total_loja > 0 %>
+          <tr>
+            <td colspan="8"></td>
+            <td colspan="3"><h6>Total por loja: <%= @total_loja.to_s %></h6></td>
+          </tr>
+
+          <% @total_loja = 0 %>
+        <% end %>
+
+        <tr>
+          <td colspan="11">
+            <h4><%= dados_inportacao_cnab.nome_loja %></h4>
+            <h6><%= dados_inportacao_cnab.dono_da_loja %></h6>
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= dados_inportacao_cnab.tipo %></td>
+          <td><%= dados_inportacao_cnab.data %></td>
+          <td><%= dados_inportacao_cnab.valor %></td>
+          <td><%= dados_inportacao_cnab.cpf %></td>
+          <td><%= dados_inportacao_cnab.cartao %></td>
+          <td><%= dados_inportacao_cnab.hora %></td>
+          <td><%#= dados_inportacao_cnab.dono_da_loja %></td>
+          <td><%#= dados_inportacao_cnab.nome_loja %></td>
+          <td><%= link_to 'Show', dados_inportacao_cnab %></td>
+          <td><%= link_to 'Destroy', dados_inportacao_cnab, method: :delete %></td>
+        </tr>
+
+        <% @total_loja = @total_loja + dados_inportacao_cnab.valor.to_f %>
+      <% end %>
+
+      <% if dados_inportacao_cnab.nome_loja == @loja_anterior %>
+        <tr>
+          <td><%= dados_inportacao_cnab.tipo %></td>
+          <td><%= dados_inportacao_cnab.data %></td>
+          <td><%= dados_inportacao_cnab.valor %></td>
+          <td><%= dados_inportacao_cnab.cpf %></td>
+          <td><%= dados_inportacao_cnab.cartao %></td>
+          <td><%= dados_inportacao_cnab.hora %></td>
+          <td><%#= dados_inportacao_cnab.dono_da_loja %></td>
+          <td><%#= dados_inportacao_cnab.nome_loja %></td>
+          <td><%= link_to 'Show', dados_inportacao_cnab %></td>
+          <td><%= link_to 'Destroy', dados_inportacao_cnab, method: :delete %></td>
+        </tr>
+
+        <% @total_loja = @total_loja + dados_inportacao_cnab.valor.to_f %>
+      <% end %>
+
+      <% @loja_anterior = dados_inportacao_cnab.nome_loja %>
+
+      <% @total_geral = @total_geral + dados_inportacao_cnab.valor.to_f %>
+    <% end %>
+
+    <% if @total_loja > 0 %>
+      <tr>
+        <td colspan="8"></td>
+        <td colspan="3"><h6>Total por loja: <%= @total_loja.to_s %></h6></td>
+      </tr>
+
+      <% @total_loja = 0 %>
+    <% end %>
+
+    <% if @total_geral > 0 %>
+      <tr>
+        <td colspan="8"></td>
+        <td colspan="3"><h4>Total Geral: <%= @total_geral.to_s %></h4></td>
+      </tr>
+
+      <% @total_geral = 0 %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Importar novo arquivo', new_dados_inportacao_cnab_path, class: "waves-effect waves-light btn", style: "color:white;" %>
